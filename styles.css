@@ -42,3 +42,25 @@ button{
 button:hover{
     background: bisque;
 }
+
+.menuContent{
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto, 1fr) ;
+}
+
+.menuItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemImg{
+    height: auto;
+    width: 50%;
+    margin: 10px 10px;
+    transform: scale(1);
+
+}
