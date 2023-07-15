@@ -1,6 +1,5 @@
 
-// I changed the repo
-
+import { MenuArray } from "./menu.js"
 
 const content = document.querySelector('.content')
 const header = document.getElementById('header')
@@ -9,23 +8,14 @@ const menuButton = document.getElementById('menu')
 const contactButton = document.getElementById('contact')
 
 
-
-const MenuArray = [
-    ["Skillet Hash", "Two eggs made-to-order atop a bed of oven roasted potatoes with your choice of smoked salmon, bacon, or avacodo ", "620"],
-    ["Eggs Benedict", "Two poached cage-free eggs atop toasted ciabatta piled high with smoked ham and vine-ripened tomato and covered with hollandaise. Served with lemon-dressed organic mixed greens. ", "600"],
-    ["Original Farmers Choice", "Our signature breakfast includes your choice of premium breakfast meat, two fresh-cracked eggs cooked-to-order, and hash browns or home fries. Served with three hotcakes or two slices of Brioche French toast", "1070"],
-    ["Belgian Waffle", "Our light and airy waffle with a side of warm mixed berry compote and powdered cinnamon sugar.", "590"],
-    ["Sausage Biscuits & Gravy", " Sausage gravy served with freshly-baked biscuits", "1600"],
-    ["Steel-Cut Oatmeal", "Made to order with berries, fresh sliced banana, pecans, low-fat milk, brown sugar and a freshly baked muffin of the day.", "990"]
-
-]
-
 // Global variables
 const items = []
 var menuItems = {}
 var itemArray = []
 var descArray = []
 var calArray = []
+var imgMap = []
+var htmlElements = ""
 
 
 const headerButtons = document.querySelectorAll('.headerButton')
@@ -77,7 +67,7 @@ function popConstructors() {
 
 
 function createMenuItems() {
-    for (i = 0; i < itemArray.length; i++) {
+    for (let i = 0; i < itemArray.length; i++) {
         const menuItems = {
             item: itemArray[i],
             desc: descArray[i],
@@ -88,7 +78,7 @@ function createMenuItems() {
     }
 }
 
-var imgMap = []
+
 
 function populateMenu() {
 
@@ -100,8 +90,6 @@ function populateMenu() {
         imgMap[i] = "/img/"+items[i].item.replaceAll(" ", "_")+".png"
 
     }
-debugger
-    var htmlElements = ""
 
     console.log(htmlElements)
     for (let i = 0; i < items.length; i++) {
@@ -109,6 +97,7 @@ debugger
         htmlElements += `<div class = "menuItem" id="${i}"> \n
                             <div class = "item">${items[i].item}</div> \n
                             <img src = "${imgMap[i]}" class = "itemImg"></img> \n
+                            <i class = "cal">${items[i].calories} cal.</i> \n
                             <div class = "desc">${items[i].desc}</div>
                         </div>`;
 
@@ -118,6 +107,4 @@ debugger
     content.append(menuContainer)
     console.log(imgMap)
 
-
-    // console.log(items[1].item)
 }
